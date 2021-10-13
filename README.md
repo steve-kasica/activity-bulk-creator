@@ -14,11 +14,15 @@ To work properly, this add-on requires the following scopes within your Google A
 * Display and run third-party web content in prompts and sidebars inside Google applications
 * Connect to an external service
 
-To authenticate with Strava, click *Check Strava connection* from the dropdown menu. You will be prompted to enter your Strava App's client id and client secret, then you'll perform the regular OAuth dance to authorize the add-on to access your Strava data. Right now, the only scope requested is `activity:write`.
+To authenticate with Strava, click *Check Strava connection* from the dropdown menu. You will perform the regular OAuth dance to authorize the add-on to access your Strava data. Currently, the application expects the client ID and client secret for your Strava API to be stored in Script Properties, see `Strava.gs`. The only scope requested of Strava is `activity:write`.
+
+![Authenticate with Strava](assets/authenticate.gif)
 
 ## Setting the stage
 
 Click the *Build sheet* option from the add-ons drop down menu to create a new sheet named Activities. This sheet is pre-populated with the required and optional fields for the [Create Activity endpoint on Strava's API](https://developers.strava.com/docs/reference/#api-Activities-createActivity). Basic information about each field is included as notes for respective cells.
+
+![Creating a sheet for uploading Strava activities](assets/create-sheet.gif)
 
 ## Entering data
 
@@ -31,7 +35,7 @@ Because this add-on is a proof-of-concept, the onus for properly formatting inpu
 
 Upload rows of entered data to Strava as manually created activities by selecting the rows you wish you upload and clicking *Upload selected rows* from the dropdown menu. The row turns green if the upload is successful and red if there has been an error.
 
-![Uploading activities](https://i.imgur.com/GzQxU7k.gif)
+![Uploading activities](assets/upload.gif)
 
 This add-on uploads selected rows rather than the entire sheet to better handle upload errors. Each row of data is uploaded to Strava individually, so if one row fails, then it won't impede the entire process. The user can then handle error uploads individually. One reason why an upload may fail is if there already exists an activity with the exact same `start_time_local` value.
 
